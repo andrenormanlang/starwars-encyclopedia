@@ -46,7 +46,7 @@ const HomePage = () => {
 
   return (
     <div
-      style={{
+      style={{    
         backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -58,6 +58,7 @@ const HomePage = () => {
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         padding: '20px',
+        background: 'darkgray',
       }}
     >
       <h1 style={styles.heading}>Welcome to Star Wars Encyclopedia!</h1>
