@@ -1,29 +1,155 @@
-import axios, { AxiosResponse }  from 'axios';
-import { Film, Character, PartialCharacter } from '../types';
+/**
+ * SWAPI API service
+ *
+ *
+ */
 
-const BASE_URL = 'https://swapi.thehiveresistance.com/api';
+import axios from "axios";
+import {
+  Character,
+  Film,
+  PageFilm,
+  PagePeople,
+  Species,
+  PageSpecies,
+  PagePlanets,
+  Planet,
+} from "../types/index";
 
-//  API functions
-export const getFilm = async function fetchFilm(searchQuery: string): Promise<Film[]> {
-	try {
-        const responseFilm:  AxiosResponse<Film[]> = await axios.get(`${BASE_URL}/films?search=${searchQuery}`)
-        return responseFilm.data as Film[]
-    } catch (error) {
-        console.log(error);
-        return[]
-	}
-}
+// Create a new axios instance
+const instance = axios.create({
+  baseURL: "https://swapi.thehiveresistance.com/api",
+  timeout: 10000,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+});
 
-const getCharacter = async <Character>(endpoint: string) => {
-	const response = await axios.get(`${BASE_URL}/people`)
-	return response.data as Character
-}
-
+/**
+ * Execute a HTTP GET request to an endpoint.
+ *
+ * @param {string} endpoint Endpoint to HTTP GET
+ * @returns Promise
+ */
 const get = async <T>(endpoint: string) => {
-	const response = await axios.get(endpoint)
-	return response.data as T
-}
+  const response = await instance.get(endpoint);
+  return response.data as T;
+};
 
-export const searchPeople = async (person:PartialCharacter ) => {
-	return get<any>(`/?search=${person}`)
-}
+/**
+ * Film
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+export const searchFilm = async (searchQuery: string) => {
+  return get<PageFilm>(`/films?search=${searchQuery}`);
+};
+
+export const getAllFilms = async () => {
+  return get<PageFilm>(`/films`);
+};
+
+export const getFilm = async (id: number) => {
+  return get<Film>(`/films/${id}`);
+};
+
+/**
+ * People
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+
+export const searchPerson = async (
+  searchQuery: string,
+  page = 0,
+  per_page = 9
+) => {
+  return get<PagePeople>(
+    `/people?search=${searchQuery}&page=${page}&per_page=${per_page}`
+  );
+};
+
+export const getAllPeople = async (page = 0, per_page = 9) => {
+  return get<PagePeople>(`/people?page=${page}&per_page=${per_page}`);
+};
+
+export const getPagePeople = async (pageUrl: string) => {
+  return get<PagePeople>(pageUrl);
+};
+
+export const getPerson = async (id: number) => {
+  return get<Character>(`/people/${id}`);
+};
+
+/**
+ * Species
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+
+export const searchSpecies = async (
+  searchQuery: string,
+  page = 0,
+  per_page = 9
+) => {
+  return get<PageSpecies>(
+    `/species?search=${searchQuery}&page=${page}&per_page=${per_page}`
+  );
+};
+
+export const getAllSpecies = async (page = 0, per_page = 9) => {
+  return get<PageSpecies>(`/species?page=${page}&per_page=${per_page}`);
+};
+
+export const getPageSpecies = async (pageUrl: string) => {
+  return get<PageSpecies>(pageUrl);
+};
+
+export const getSpecies = async (id: number) => {
+  return get<Species>(`/species/${id}`);
+};
+
+/**
+ * Planets
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+
+export const searchPlanets = async (
+  searchQuery: string,
+  page = 0,
+  per_page = 9
+) => {
+  return get<PagePlanets>(
+    `/planets?search=${searchQuery}&page=${page}&per_page=${per_page}`
+  );
+};
+
+export const getAllPlanets = async (page = 0, per_page = 9) => {
+  return get<PagePlanets>(`/planets?page=${page}&per_page=${per_page}`);
+};
+
+export const getPagePlanets = async (pageUrl: string) => {
+  return get<PagePlanets>(pageUrl);
+};
+
+export const getPlanet = async (id: number) => {
+  return get<Planet>(`/planets/${id}`);
+};
