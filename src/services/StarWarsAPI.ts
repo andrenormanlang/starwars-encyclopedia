@@ -14,6 +14,10 @@ import {
   PageSpecies,
   PagePlanets,
   Planet,
+  PageStarships,
+  Starship,
+  PageVehicles,
+  Vehicle
 } from "../types/index";
 
 // Create a new axios instance
@@ -152,4 +156,69 @@ export const getPagePlanets = async (pageUrl: string) => {
 
 export const getPlanet = async (id: number) => {
   return get<Planet>(`/planets/${id}`);
+};
+
+/**
+ * Starships
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+
+export const searchStarships = async (
+  searchQuery: string,
+  page = 0,
+  per_page = 9
+) => {
+  return get<PageStarships>(
+    `/starships?search=${searchQuery}&page=${page}&per_page=${per_page}`
+  );
+};
+
+export const getAllStarships = async (page = 0, per_page = 9) => {
+  return get<PageStarships>(`/starships?page=${page}&per_page=${per_page}`);
+};
+
+export const getPageStarships= async (pageUrl: string) => {
+  return get<PageStarships>(pageUrl);
+};
+
+export const getStarship = async (id: number) => {
+  return get<Starship>(`/starships/${id}`);
+};
+
+
+/**
+ * Vehicles
+ *
+ * @todo Replace any with correct type definition 😱!
+ *
+ * @param {string} query Search query to search for
+ * @param {number} page Page of search results to get
+ * @returns Promise
+ */
+
+export const searchVehicles = async (
+  searchQuery: string,
+  page = 0,
+  per_page = 9
+) => {
+  return get<PageVehicles>(
+    `/vehicles?search=${searchQuery}&page=${page}&per_page=${per_page}`
+  );
+};
+
+export const getAllVehicles = async (page = 0, per_page = 9) => {
+  return get<PageVehicles>(`/vehicles?page=${page}&per_page=${per_page}`);
+};
+
+export const getPageVehicles= async (pageUrl: string) => {
+  return get<PageVehicles>(pageUrl);
+};
+
+export const getVehicle = async (id: number) => {
+  return get<Vehicle>(`/vehicles/${id}`);
 };

@@ -141,3 +141,81 @@ export type PagePlanets = {
     to: number
     total: number
 }
+
+//STARSHIPS
+export type Starship = {
+	id: number;
+	name: string;
+	model: string;
+	starship_class: string;
+	manufacturer: string;
+	cost_in_credits: string;
+	length: string;
+	crew: string;
+	passengers: string;
+	max_atmosphering_speed: string;
+	hyperdrive_rating: string;
+	MGLT: string;
+	cargo_capacity: string;
+	consumables: string;
+	pilots_count: number;
+	films_count: number;
+	pilots:[ {
+		id: number;
+		name: string;
+	}];
+	films:[{
+		id: number;
+		title: string;
+	}];
+};
+
+export type PageStarships = {
+	current_page: number;
+	data: Starship[]
+	last_page: number;
+	next_page_url: string | null
+    path: string
+    per_page: number
+    prev_page_url: string | null
+    to: number
+    total: number
+}
+
+//VEHICLES
+export type Vehicle = {
+	id: number;
+	name: string;
+	model: string;
+	vehicle_class: string;
+	manufacturer: string;
+	length: string;
+	cost_in_credits: string;
+	crew: string;
+	passengers: string;
+	max_atmosphering_speed: string;
+	cargo_capacity: string;
+	consumables: string;
+	pilots_count: number;
+	films_count: number;
+	pilots:[ {
+		id: number;
+		name: string;
+	}];
+	films:[{
+		id: number;
+		title: string;
+	}];
+};
+
+export type PageVehicles = {
+	current_page: number;
+	data: Vehicle[]
+	last_page: number;
+	next_page_url: string | null
+    path: string
+    per_page: number
+    prev_page_url: string | null
+    to: number
+    total: number
+}

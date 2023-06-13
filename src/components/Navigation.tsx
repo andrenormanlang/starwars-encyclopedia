@@ -16,6 +16,8 @@ const Navigation = () => {
 						<Nav.Link as={NavLink} end to="/search-people">People</Nav.Link>
 						<Nav.Link as={NavLink} end to="/search-species">Species</Nav.Link>
 						<Nav.Link as={NavLink} end to="/search-planets">Planets</Nav.Link>
+						<Nav.Link as={NavLink} end to="/search-starships">Starships</Nav.Link>
+						<Nav.Link as={NavLink} end to="/search-vehicles">Vehicles</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

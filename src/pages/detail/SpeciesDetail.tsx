@@ -7,14 +7,14 @@ import { Link, useParams } from "react-router-dom";
 import { getSpecies as getSpeciesById } from "../../services/StarWarsAPI";
 import { Species } from "../../types";
 
-const PersonDetail = () => {
+const SpeciesDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [species, setSpecies] = useState<Species | null>(null);
   const { id } = useParams();
   const speciesId = Number(id);
 
-  // Get person from API
+  // Get species from API
   const fetchSpecies = async (id: number) => {
     setError(null);
     setLoading(true);
@@ -22,7 +22,7 @@ const PersonDetail = () => {
     try {
       const data = await getSpeciesById(id);
 
-      // Update person state with data
+      // Update species state with data
       setSpecies(data);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
@@ -108,4 +108,4 @@ const PersonDetail = () => {
   );
 };
 
-export default PersonDetail;
+export default SpeciesDetail;

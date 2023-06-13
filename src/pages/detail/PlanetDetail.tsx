@@ -14,7 +14,7 @@ const PlanetDetail = () => {
   const { id } = useParams();
   const planetId = Number(id);
 
-  // Get person from API
+  // Get planet from API
   const fetchPlanet = async (id: number) => {
     setError(null);
     setLoading(true);
@@ -22,7 +22,7 @@ const PlanetDetail = () => {
     try {
       const data = await getPlanetById(id);
 
-      // Update person state with data
+      // Update planet state with data
       setPlanet(data);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

@@ -8,29 +8,29 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useSearchParams } from "react-router-dom";
 import {
-  searchSpecies,
-  getAllSpecies,
-  getPageSpecies,
+  searchVehicles,
+  getAllVehicles,
+  getPageVehicles,
 } from "../../services/StarWarsAPI";
-import { PageSpecies, Species } from "../../types";
+import { PageVehicles, Vehicle } from "../../types";
 import Pagination from "../../components/Pagination";
 
-const SearchSpecies = () => {
+const SearchVehicles = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState<PageSpecies | null>(null);
+  const [searchResult, setSearchResult] = useState<PageVehicles | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get("query");
 
-  const fetchAllSpecies = async (searchPage = 0) => {
+  const fetchAllVehicles = async (searchPage = 0) => {
     setError(null);
     setLoading(true);
     setSearchResult(null);
 
     try {
-      const res = await getAllSpecies(searchPage);
+      const res = await getAllVehicles(searchPage);
       setSearchResult(res);
     } catch (err: any) {
       setError(err.message);
@@ -45,7 +45,7 @@ const SearchSpecies = () => {
     setSearchResult(null);
 
     try {
-      const res = await getPageSpecies(pageUrl);
+      const res = await getPageVehicles(pageUrl);
       setSearchResult(res);
       setSearchParams({ query: searchInput, page: String(res.current_page) });
     } catch (err: any) {
@@ -55,13 +55,13 @@ const SearchSpecies = () => {
     setLoading(false);
   };
 
-  const findSpecies = async (searchQuery: string, searchPage = 0) => {
+  const findVehicle = async (searchQuery: string, searchPage = 0) => {
     setError(null);
     setLoading(true);
     setSearchResult(null);
 
     try {
-      const res = await searchSpecies(searchQuery, searchPage);
+      const res = await searchVehicles(searchQuery, searchPage);
       setSearchResult(res);
     } catch (err: any) {
       setError(err.message);
@@ -82,9 +82,9 @@ const SearchSpecies = () => {
 
   useEffect(() => {
     if (!query) {
-      fetchAllSpecies();
+      fetchAllVehicles();
     } else {
-      findSpecies(query);
+      findVehicle(query);
     }
   }, [query]);
 
@@ -121,7 +121,7 @@ const SearchSpecies = () => {
 
       {!query && searchResult && (
         <p>
-          There are a total of {searchResult.total} species in Star Wars
+          There are a total of {searchResult.total} vehicles in Star Wars
           episodes 1 to 6. Use the force and do a search in the query above.
         </p>
       )}
@@ -135,26 +135,26 @@ const SearchSpecies = () => {
             </p>
           )}
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {searchResult.data.map((species: Species) => (
-              <div className="col mb-4" key={species.id}>
+            {searchResult.data.map((vehicle: Vehicle) => (
+              <div className="col mb-4" key={vehicle.id}>
                 <Card border="primary" style={{ width: "18rem" }}>
                   <Card.Header className="card-header">
-                    {species.name}
+                    {vehicle.name}
                   </Card.Header>
                   <Card.Body>
                     <ListGroup className="list-group-flush">
-                      <ListGroup.Item key="classification">
-                        Classification: {species.classification}
+                      <ListGroup.Item key="model">
+                        Model: {vehicle.model}
                       </ListGroup.Item>
-                      <ListGroup.Item key="Total Appearances">
-                        Language: {species.language}
+                      <ListGroup.Item key="class">
+                        Class: {vehicle.vehicle_class} 
                       </ListGroup.Item>
-                      <ListGroup.Item key="Homeworld">
-                        Homeworld: {species.homeworld?.name}{" "}
+                      <ListGroup.Item key="Manufacturer">
+                        Manufacturer: {vehicle.manufacturer}
                       </ListGroup.Item>
                     </ListGroup>
 
-                    <Link to={`/species/${species.id}`}>
+                    <Link to={`/vehicles/${vehicle.id}`}>
                       <Button variant="primary">Read More</Button>
                     </Link>
                   </Card.Body>
@@ -180,4 +180,4 @@ const SearchSpecies = () => {
   );
 };
 
-export default SearchSpecies;
+export default SearchVehicles;

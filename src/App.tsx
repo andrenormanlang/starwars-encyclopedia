@@ -12,6 +12,10 @@ import SearchSpecies from "./pages/searches/SearchSpecies";
 import SpeciesDetail from "./pages/detail/SpeciesDetail";
 import SearchPlanets from "./pages/searches/SearchPlanets";
 import PlanetDetail from "./pages/detail/PlanetDetail";
+import SearchStarships from "./pages/searches/SearchStarships";
+import StarshipDetail from "./pages/detail/StarshipDetail";
+import SearchVehicles from "./pages/searches/SearchVehicles";
+import VehicleDetail from "./pages/detail/VehicleDetail";
 
 
 const App = () => {
@@ -34,6 +38,12 @@ const App = () => {
 
 			<Route path="/search-planets" element={<SearchPlanets />} />
 			<Route path="/planets/:id" element={<PlanetDetail />} />
+
+			<Route path="/search-starships" element={<SearchStarships />} />
+			<Route path="/starships/:id" element={<StarshipDetail />} />
+
+			<Route path="/search-vehicles" element={<SearchVehicles />} />
+			<Route path="/vehicles/:id" element={<VehicleDetail />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>
