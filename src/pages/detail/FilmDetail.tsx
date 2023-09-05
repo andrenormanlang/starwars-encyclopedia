@@ -69,7 +69,7 @@ const FilmDetail = () => {
         <Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroup.Item key="episode">
-              Director {film.director}
+              Director: {film.director}
             </ListGroup.Item>
             <ListGroup.Item key="episode">
               Synopsis: <br></br>
@@ -77,7 +77,7 @@ const FilmDetail = () => {
               {film.opening_crawl}
             </ListGroup.Item>
             <ListGroup.Item key="release_date">
-              Release Date {film.release_date}
+              Release Date: {film.release_date}
             </ListGroup.Item>
             <ListGroup.Item key="characters">
               Characters:

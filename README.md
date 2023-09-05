@@ -1,4 +1,4 @@
-# Star Wars Encyclopedia 
+# Star Wars Encyclopedia
 
 This is a Star Wars Visual Encyclopedia made for the Javascript Advanced course of Medieinstitutet where an user bility to browse through movies and individuals of Star Wars episodes 1 to 6.
 

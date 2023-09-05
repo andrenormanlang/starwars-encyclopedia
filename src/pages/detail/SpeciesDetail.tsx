@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { getSpecies as getSpeciesById } from "../../services/StarWarsAPI";
 import { Species } from "../../types";
 
+
 const SpeciesDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -81,23 +82,15 @@ const SpeciesDetail = () => {
               Average Lifespan: {species.average_lifespan}
             </ListGroup.Item>
             <ListGroup.Item key="species">
-              Species:
+              People:
               <ul>
                 {species.people?.map((people) => (
-                  <li key={people.id}>{people.name}</li>
-                ))}
-              </ul>
-            </ListGroup.Item>
-            {/* <ListGroup.Item key="films">
-              Films:
-              <ul>
-                {person.films?.map((film) => (
-                  <li key={film.id}>
-                    <Link to={`/films/${film.id}`}>{film.title}</Link>
+                  <li key={people.id}>
+                    <Link to={`/people/${people.id}`}>{people.name}</Link>
                   </li>
                 ))}
               </ul>
-            </ListGroup.Item> */}
+            </ListGroup.Item>
           </ListGroup>
           <Link to={`/search-species`}>
             <Button variant="primary">Back to Species</Button>

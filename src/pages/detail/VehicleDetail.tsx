@@ -99,16 +99,6 @@ const VehicleDetail = () => {
                 ))}
               </ul>
             </ListGroup.Item>
-            {/* <ListGroup.Item key="films">
-              Films:
-              <ul>
-                {person.films?.map((film) => (
-                  <li key={film.id}>
-                    <Link to={`/films/${film.id}`}>{film.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </ListGroup.Item> */}
           </ListGroup>
           <Link to={`/search-vehicles`}>
             <Button variant="primary">Back to Vehicles</Button>

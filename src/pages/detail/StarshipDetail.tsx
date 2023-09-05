@@ -75,7 +75,7 @@ const StarshipDetail = () => {
               Max atmosphering speed: {starship.max_atmosphering_speed}
             </ListGroup.Item>
             <ListGroup.Item key="hyperdrive rating">
-              Hyperdrive rating: {starship.hyperdrive_rating} 
+              Hyperdrive rating: {starship.hyperdrive_rating}
             </ListGroup.Item>
             <ListGroup.Item key="cargo capacity">
               Cargo capacity: {starship.cargo_capacity}
@@ -96,16 +96,6 @@ const StarshipDetail = () => {
                 ))}
               </ul>
             </ListGroup.Item>
-            {/* <ListGroup.Item key="films">
-              Films:
-              <ul>
-                {person.films?.map((film) => (
-                  <li key={film.id}>
-                    <Link to={`/films/${film.id}`}>{film.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </ListGroup.Item> */}
           </ListGroup>
           <Link to={`/search-starships`}>
             <Button variant="primary">Back to Starships</Button>

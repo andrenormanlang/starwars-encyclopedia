@@ -1,21 +1,3 @@
-// import Button from 'react-bootstrap/Button'
-// import { Link } from 'react-router-dom'
-// import { Image } from 'react-bootstrap';
-// import bgimagedesktoplaptoptablet from '../assets/images/bghomepage.jpg'
-// import bgimagemobile from '../assets/images/bghomepagemobile.jpg'
-
-// const HomePage = () => {
-// 	return (
-// 		<>
-// 			<h1>Welcome to Star Wars Encyclopedia!</h1>
-
-// 			<Link to="/search-films">
-// 				<Button variant="primary">Use the Search, you must!</Button>
-// 			</Link>
-// 		</>
-// 	)
-// }
-
 // export default HomePage
 import  { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
